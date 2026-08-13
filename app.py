@@ -15,8 +15,7 @@ def home():
         <h1>PPT Voice Agent</h1>
         <p>Upload a PowerPoint presentation and generate narration.</p>
 
-        /upload
-            <input type="file" name="file" accept=".pptx">
+        <form action="/upload" method="post" enctype="ile" accept=".pptx">
             <button type="submit">Upload PPT</button>
         </form>
     </body>
