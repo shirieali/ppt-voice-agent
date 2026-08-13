@@ -7,7 +7,6 @@ app = FastAPI()
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-
 @app.get("/", response_class=HTMLResponse)
 def home():
     return """
@@ -15,25 +14,9 @@ def home():
     <html>
     <head>
         <title>PPT Voice Agent</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 40px;
-            }
-
-            h1 {
-                color: #1f4e79;
-            }
-
-            button {
-                padding: 10px 20px;
-                cursor: pointer;
-            }
-        </style>
     </head>
     <body>
         <h1>PPT Voice Agent</h1>
-
         <p>Upload a PowerPoint presentation and generate narration.</p>
 
         /upload
@@ -46,7 +29,6 @@ def home():
     </html>
     """
 
-
 @app.post("/upload")
 async def upload_ppt(file: UploadFile = File(...)):
     file_path = os.path.join(UPLOAD_DIR, file.filename)
@@ -57,6 +39,5 @@ async def upload_ppt(file: UploadFile = File(...)):
 
     return {
         "filename": file.filename,
-        "status": "Upload successful",
-        "saved_to": file_path
+        "status": "Upload successful"
     }
