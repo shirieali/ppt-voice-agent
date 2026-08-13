@@ -6,24 +6,21 @@ app = FastAPI()
 @app.get("/", response_class=HTMLResponse)
 def home():
     return """
-    <!DOCTYPE html>
     <html>
-    <head>
-        <title>PPT Voice Agent</title>
-    </head>
     <body>
         <h1>PPT Voice Agent</h1>
-        <p>Upload a PowerPoint presentation and generate narration.</p>
 
-        <form action="/upload" method="post" enctype="ile" accept=".pptx">
+        <formad
+            <input type="file" name="file" accept=".pptx">
             <button type="submit">Upload PPT</button>
         </form>
+
     </body>
     </html>
     """
 
 @app.post("/upload")
-async def upload_ppt(file: UploadFile = File(...)):
+async def upload(file: UploadFile = File(...)):
     return {
         "filename": file.filename,
         "status": "Upload successful"
